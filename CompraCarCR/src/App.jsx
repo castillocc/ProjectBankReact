@@ -1,9 +1,17 @@
-import './App.css';
-import Home from './components/Home';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./components/Landing";
+import CarDetails from "./components/CarDetails";
 
-
-export default function App() {
+function App() {
   return (
-    <Home></Home>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/vehiculo/:id" element={<CarDetails />} />
+      </Routes>
+    </Router>
+  );
 }
+
+export default App;
