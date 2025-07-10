@@ -1,29 +1,12 @@
 import React from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCars } from "../context/slice/CarSlice.jsx";
 
-const featuredCars = [
-  {
-    id: 1,
-    name: "Toyota Corolla 2023",
-    price: "$22,500",
-    image: "https://www.hyundaicr.com/images/modelos/venue/elementos/blue-07.webp",
-  },
-  {
-    id: 2,
-    name: "Hyundai Venue 2022",
-    price: "$19,800",
-    image: "https://www.hyundaicr.com/images/modelos/venue/elementos/blue-07.webp",
-  },
-  {
-    id: 3,
-    name: "Kia Sportage 2024",
-    price: "$28,700",
-    image: "https://www.hyundaicr.com/images/modelos/venue/elementos/blue-07.webp",
-  },
-];
 
 const Landing = () => {
+  const cars = useSelector(selectCars);
   return (
     <div>
       <Header />
@@ -38,7 +21,7 @@ const Landing = () => {
       <section className="bg-white py-10 px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Vehículos Destacados</h2>
         <div className="flex overflow-x-auto gap-6 px-4 pb-4 snap-x snap-mandatory">
-          {featuredCars.map((car) => (
+          {cars.map((car) => (
             <Link
               to={`/vehiculo/${car.id}`}
               key={car.id}
