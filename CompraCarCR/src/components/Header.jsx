@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/compracarcr.svg"; // importar imagen
 import { useUser } from "../context/UserContext";
 
 const Header = () => {
@@ -31,10 +32,12 @@ return () => document.removeEventListener("mousedown", closeOnClickOutside);
 return (
 <header className="bg-purple-800 text-white px-6 py-4 shadow-md" ref={menuRef}>
 <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-<Link to="/" className="text-2xl font-bold">
-CompraCarCR
+{/* Logo y Marca a la izquierda */}
+<Link to="/" className="flex items-center space-x-2">
+<img src={logo} alt="Logo" className="w-10 h-10" />
+<span className="text-xl font-bold text-white">CompraCarCR</span>
 </Link>
-{/* Botón hamburguesa */}
+{/* Botón hamburguesa visible solo en móvil */}
     <button
       className="md:hidden text-white focus:outline-none"
       onClick={() => setMobileOpen(!mobileOpen)}
@@ -63,7 +66,7 @@ CompraCarCR
       </svg>
     </button>
 
-    {/* Menú normal (desktop) */}
+    {/* Menú desktop a la derecha */}
     <nav className="hidden md:flex space-x-6 items-center">
       <Link to="/" className="hover:text-purple-600 font-medium">
         Inicio
@@ -72,6 +75,7 @@ CompraCarCR
         Acerca de
       </Link>
 
+      {/* Submenú Vehículos */}
       <div className="relative">
         <button
           onClick={() => toggleDropdown("vehiculos")}
@@ -97,6 +101,7 @@ CompraCarCR
         )}
       </div>
 
+      {/* Submenú Login */}
       <div className="relative">
         <button
           onClick={() => toggleDropdown("login")}
@@ -135,7 +140,7 @@ CompraCarCR
     </nav>
   </div>
 
-  {/* Menú móvil */}
+  {/* Menú móvil debajo (colapsable) */}
   {mobileOpen && (
     <div className="md:hidden bg-purple-700 border-t px-4 py-4 space-y-3">
       <Link
@@ -222,4 +227,5 @@ CompraCarCR
 </header>
 );
 };
+
 export default Header;

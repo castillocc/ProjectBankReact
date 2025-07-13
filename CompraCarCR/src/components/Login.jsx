@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/compracarcr.svg";
 
 const API_URL = "http://localhost:3000/users";
 
@@ -59,11 +60,13 @@ try {
 };
 
 return (
-<div className="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded">
+<div className="max-w-md mx-auto mt-12 p-6 bg-white shadow rounded text-center"> 
+    <img src={logo} alt="Logo CompraCarCR" className="mx-auto w-16 h-16 mb-2" /> 
+    <h1 className="text-xl font-bold text-blue-600 mb-4">CompraCarCR</h1>
 <h2 className="text-2xl font-bold mb-4">
 {isRegister ? "Crear Cuenta" : "Iniciar Sesión"}
 </h2>
-<form onSubmit={handleSubmit} className="space-y-4">
+<form onSubmit={handleSubmit} className="space-y-4 text-left">
     <input
       name="email"
       type="email"
