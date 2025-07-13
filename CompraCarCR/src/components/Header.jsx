@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/compracarcr.svg"; // importar imagen
 import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 const [mobileOpen, setMobileOpen] = useState(false);
 const [openDropdown, setOpenDropdown] = useState(null);
 const menuRef = useRef(null);
 const { user, logout } = useUser();
+const navigate = useNavigate();
 
 const toggleDropdown = (menu) => {
 setOpenDropdown((prev) => (prev === menu ? null : menu));
@@ -16,6 +18,7 @@ setOpenDropdown((prev) => (prev === menu ? null : menu));
 const handleLogout = () => {
 logout();
 setMobileOpen(false);
+navigate("/login");
 };
 
 useEffect(() => {

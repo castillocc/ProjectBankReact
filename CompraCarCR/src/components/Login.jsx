@@ -11,7 +11,7 @@ const { login } = useUser();
 const navigate = useNavigate();
 
 const [isRegister, setIsRegister] = useState(false);
-const [form, setForm] = useState({ email: "", password: "" });
+const [form, setForm] = useState({ email: "", password: "" , spSer: "NO"});
 const [error, setError] = useState("");
 
 const handleChange = (e) => {
@@ -39,7 +39,8 @@ try {
     // Crear usuario
     const res = await axios.post(API_URL, form);
     login(res.data);
-    navigate("/");
+    setIsRegister(false);
+    navigate("/inicio");
   } else {
     // Login
     const res = await axios.get(
@@ -49,7 +50,7 @@ try {
       setError("Usuario o contraseña incorrectos");
     } else {
       login(res.data[0]);
-      navigate("/");
+      navigate("/inicio");
     }
   }
 } catch (err) {
