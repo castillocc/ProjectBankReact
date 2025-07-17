@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCarById } from "../context/slice/CarSlice.jsx";
+import { selectCarById } from "../../context/slice/CarSlice.jsx";
 
 const CarDetails = () => {
     const { id } = useParams();

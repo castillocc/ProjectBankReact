@@ -1,6 +1,6 @@
 import React from "react";
 
-function Acerca(){
+function About(){
     return (
         <div className="p-8"> 
             <h1 className="text-3xl font-bold mb-4">Acerca de CompraCarCR</h1> 
@@ -9,4 +9,4 @@ function Acerca(){
     )
 }
 
-export default Acerca;
+export default About;

@@ -1,18 +1,40 @@
-import React, { createContext, useContext, useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from "react";
+import { login as apiLogin } from "../services/UserServices";
 
-const UserContext = createContext();
-
-export const useUser = () => useContext(UserContext);
+export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-const [user, setUser] = useState(null); // usuario autenticado
+  const [user, setUserState] = useState(null);
 
-const login = (userData) => setUser(userData);
-const logout = () => setUser(null);
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUserState(JSON.parse(savedUser));
+    }
+  }, []);
 
-return (
-<UserContext.Provider value={{ user, login, logout }}>
-{children}
-</UserContext.Provider>
-);
+  const login = async (email, password) => {
+    const user = await apiLogin(email, password);
+    console.log(user);
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setUserState(user);
+      return true;
+    }
+    return false;
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUserState(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
+
+export const useUser = () => useContext(UserContext);

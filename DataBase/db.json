@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin Principal",
+      "email": "admin@compracar.cr",
+      "password": "admin123",
+      "role": "admin"
+    },    {
+      "id": 2,
+      "name": "Cliente de prueba",
+      "email": "cliente@compracar.cr",
+      "password": "cliente123",
+      "role": "cliente"
+    }
+  ],
+  "vehicles": []
+}
