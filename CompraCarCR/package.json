@@ -16,9 +16,12 @@
     "framer-motion": "^12.23.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-dropzone": "^14.3.8",
     "react-hook-form": "^7.60.0",
+    "react-hot-toast": "^2.5.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3",
+    "swiper": "^11.2.10",
     "yup": "^1.6.1"
   },
   "devDependencies": {

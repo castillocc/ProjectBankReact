@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const user = await apiLogin(email, password);
-    console.log(user);
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
       setUserState(user);

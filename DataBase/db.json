@@ -6,7 +6,8 @@
       "email": "admin@compracar.cr",
       "password": "admin123",
       "role": "admin"
-    },    {
+    },
+    {
       "id": 2,
       "name": "Cliente de prueba",
       "email": "cliente@compracar.cr",
@@ -14,5 +15,48 @@
       "role": "cliente"
     }
   ],
-  "vehicles": []
+  "vehicles": [
+    {
+      "title": "Nuevo JMC GRAN AVENUE",
+      "brand": "JMC",
+      "model": "GRAN AVENUE",
+      "year": "2025",
+      "price": "40900",
+      "fuelType": "Diésel",
+      "vehicleType": "Pick-up",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752898996/iutym9zntvgoitaoair9.png",
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752902945/el5eyogq6imxxrukod9h.jpg"
+      ],
+      "video": "",
+      "userId": 2,
+      "id": "053a"
+    }
+  ],
+  "vehiclesType": [
+    {
+      "id": 1,
+      "name": "SUV"
+    },
+    {
+      "id": 2,
+      "name": "Sedán"
+    },
+    {
+      "id": 3,
+      "name": "Pick-up"
+    },
+    {
+      "id": 4,
+      "name": "Hatchback"
+    },
+    {
+      "id": 5,
+      "name": "Coupé"
+    },
+    {
+      "id": 6,
+      "name": "Convertible"
+    }
+  ]
 }
