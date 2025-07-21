@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from "../components/auth/Login";
 import Registro from '../components/auth/Registro.jsx';
@@ -8,26 +8,28 @@ import Unauthorized from "../components/admin/Unauthorized";
 import NotFound from "../components/common/NotFound";
 import ProtectedRoute from "../components/admin/ProtectedRoute";
 import AdminDashboard from "../components/admin/AdminDashboard";
-import Landing from '../components/home/Landing.jsx';
-import About from '../components/About.jsx';
+import Landing from '../components/home/LandingPage.jsx';
+import About from '../components/home/About.jsx';
+import VehicleCatalog from "../components/vehicles/Catalog/VehicleCatalog.jsx";
+import VehicleDetail from "../components/vehicles/Detail/VehicleDetail.jsx";
+import MainLayout from "../components/layout/MainLayout.jsx";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Públicas */}
-      <Route path="/" element={<Landing />} />
-      <Route path="/acerca" element={<About />} />
+      {/* Públicas con Layout */}
+      <Route path="/" element={<MainLayout><Landing /></MainLayout>} />
+      <Route path="/acerca" element={<MainLayout><About /></MainLayout>} />
+      <Route path="/vehiculos" element={<MainLayout><VehicleCatalog /></MainLayout>} />
+      <Route path="/vehiculo/:id" element={<MainLayout><VehicleDetail /></MainLayout>} /> 
+
+      {/* Públicas sin layout */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
 
       {/* Cliente */}
-      <Route
-        path="/panel-usuario"
-        element={
-            <UserDashboard />
-        }
-      />
+      <Route path="/panel-usuario" element={<UserDashboard />} />
 
       {/* Admin */}
       <Route

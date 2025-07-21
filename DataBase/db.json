@@ -40,6 +40,53 @@
       "video": "",
       "userId": 2,
       "id": "053a"
+    },
+    {
+      "title": "Nuevo JMC GRAN AVENUE",
+      "brand": "JMC",
+      "model": "GRAN AVENUE",
+      "year": "2024",
+      "price": "40900",
+      "fuelType": "Diésel",
+      "vehicleType": "Pick-up",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752902945/el5eyogq6imxxrukod9h.jpg"
+      ],
+      "video": "",
+      "userId": 2,
+      "id": "053b"
+    },
+    {
+      "title": "Nuevo JMC GRAN AVENUE",
+      "brand": "JMC",
+      "model": "GRAN AVENUE",
+      "year": "2023",
+      "price": "40900",
+      "fuelType": "Diésel",
+      "vehicleType": "Pick-up",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752898996/iutym9zntvgoitaoair9.png",
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752902945/el5eyogq6imxxrukod9h.jpg"
+      ],
+      "video": "",
+      "userId": 2,
+      "id": "053c"
+    },
+        {
+      "title": "Nuevo JMC GRAN AVENUE",
+      "brand": "JMC",
+      "model": "GRAN AVENUE",
+      "year": "2022",
+      "price": "40900",
+      "fuelType": "Diésel",
+      "vehicleType": "Pick-up",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752898996/iutym9zntvgoitaoair9.png",
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1752902945/el5eyogq6imxxrukod9h.jpg"
+      ],
+      "video": "",
+      "userId": 2,
+      "id": "053d"
     }
   ],
   "vehiclesType": [

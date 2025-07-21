@@ -26,3 +26,8 @@ export const deleteVehicle = (id) => {
 export const updateVehicle = (id, updatedData) => {
   return axios.put(`${API_URL}/${id}`, updatedData).then((res) => res.data);
 };
+// Obtiene el vehiculo por el id
+export const getVehicleById = async (id) => {
+  const res = await axios.get(`http://localhost:3000/vehicles/${id}`);
+  return res.data;
+};
