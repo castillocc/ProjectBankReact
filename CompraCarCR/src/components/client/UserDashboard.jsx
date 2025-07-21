@@ -5,6 +5,7 @@ import { getVehiclesByUserId, deleteVehicle } from "../../services/VehicleServic
 import CarLoader from "../common/CarLoader";
 import toast from "react-hot-toast";
 import ConfirmDialog from "../common/ConfirmDialog";
+import Header from '../layout/header.jsx';
 
 const VehicleDashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -66,7 +67,7 @@ const VehicleDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
+      {/* Header 
       <header className="bg-purple-700 text-white flex justify-between items-center px-6 py-4">
         <h1 className="text-xl font-bold">CompraCar</h1>
         <div className="flex items-center gap-4">
@@ -78,7 +79,8 @@ const VehicleDashboard = () => {
           />
         </div>
       </header>
-
+      */}
+      <Header />
       {/* Content */}
       <main className="p-6">
         <div className="flex justify-center mb-6">

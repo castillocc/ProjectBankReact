@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/compracarcr.svg"; // importar imagen
-import { useUser } from "../context/UserContext";
+import logo from "../../assets/compracarcr.svg"; // importar imagen
+import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -18,7 +18,7 @@ setOpenDropdown((prev) => (prev === menu ? null : menu));
 const handleLogout = () => {
 logout();
 setMobileOpen(false);
-navigate("/login");
+navigate("/");
 };
 
 useEffect(() => {
@@ -27,6 +27,7 @@ if (menuRef.current && !menuRef.current.contains(e.target)) {
 setOpenDropdown(null);
 setMobileOpen(false);
 }
+
 };
 document.addEventListener("mousedown", closeOnClickOutside);
 return () => document.removeEventListener("mousedown", closeOnClickOutside);
@@ -79,38 +80,48 @@ return (
       </Link>
 
       {/* Submenú Vehículos */}
-      <div className="relative">
-        <button
-          onClick={() => toggleDropdown("vehiculos")}
-          className="hover:text-purple-600 font-medium"
-        >
-          Vehículos
-        </button>
-        {openDropdown === "vehiculos" && (
-          <div className="absolute bg-purple-600 shadow rounded mt-2 z-10">
-            <Link
-              to="/vehiculos/usados"
-              className="block px-4 py-2 hover:bg-purple-700"
-            >
-              Usados
-            </Link>
-            <Link
-              to="/vehiculos/seminuevos"
-              className="block px-4 py-2 hover:bg-purple-700"
-            >
-              Seminuevos
-            </Link>
-          </div>
-        )}
-      </div>
+
+      {(() => {
+        if (user != null && user.role == "admin") {
+          return <div className="relative">
+                  <button
+                    onClick={() => toggleDropdown("vehiculos")}
+                    className="hover:text-purple-600 font-medium"
+                  >
+                    Vehículos
+                  </button>
+                  {openDropdown === "vehiculos" && (
+                    <div className="absolute bg-purple-600 shadow rounded mt-2 z-10">
+                      <Link
+                        to="/vehiculos/usados"
+                        className="block px-4 py-2 hover:bg-purple-700"
+                      >
+                        Usados
+                      </Link>
+                      <Link
+                        to="/vehiculos/seminuevos"
+                        className="block px-4 py-2 hover:bg-purple-700"
+                      >
+                        Seminuevos
+                      </Link>
+                    </div>
+                  )}
+                </div>;
+        }
+      })()}
 
       {/* Submenú Login */}
       <div className="relative">
         <button
           onClick={() => toggleDropdown("login")}
-          className="hover:text-purple-600 font-medium"
-        >
-          {user ? user.email : "Login"}
+          className="flex items-center gap-4 hover:text-purple-600 font-medium"
+        >          
+          <span>{user ? user.email : "Login"}</span>
+          <img
+            src="https://i.pravatar.cc/40"
+            alt="User Avatar"
+            className="rounded-full w-10 h-10"
+          />
         </button>
         {openDropdown === "login" && (
           <div className="absolute bg-purple-600 shadow rounded mt-2 z-10">

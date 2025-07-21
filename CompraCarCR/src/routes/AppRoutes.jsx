@@ -7,12 +7,15 @@ import Unauthorized from "../components/admin/Unauthorized";
 import NotFound from "../components/common/NotFound";
 import ProtectedRoute from "../components/admin/ProtectedRoute";
 import AdminDashboard from "../components/admin/AdminDashboard";
+import Landing from '../components/home/Landing.jsx';
+import About from '../components/About.jsx';
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Públicas */}
-      <Route path="/" element={<Navigate to="/panel-usuario" />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/acerca" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
 
