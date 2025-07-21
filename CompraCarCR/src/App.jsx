@@ -10,14 +10,13 @@ function App() {
         <AppRoutes />
       </Router>
       <Toaster
-        position="top-center"
+        position="bottom-right"
         toastOptions={{
-          duration: 4000,
           style: {
-            background: "#fff",
-            color: "#333",
-            border: "1px solid #ccc",
+            fontSize: "0.875rem",
+            padding: "10px 16px",
           },
+          duration: 4000,
         }}
       />
     </>

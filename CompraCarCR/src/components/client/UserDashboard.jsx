@@ -3,35 +3,46 @@ import VehicleCard from "./VehicleCard";
 import AddVehicleModal from "./AddVehicleModal";
 import { getVehiclesByUserId, deleteVehicle } from "../../services/VehicleService";
 import CarLoader from "../common/CarLoader";
-import toast from "react-hot-toast";
+import { showToastRequest } from "../utils/toastUtils";
 import ConfirmDialog from "../common/ConfirmDialog";
-import Header from '../layout/header.jsx';
+import Header from "../layout/header.jsx";
+import { useUser } from "../../context/UserContext";
 
-const VehicleDashboard = () => {
+const UserDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
   const [vehicleToDelete, setVehicleToDelete] = useState(null);
-  const userId = 2; // Simulado por ahora
+
+  const { user } = useUser(); // obtener usuario logueado
 
   const fetchVehicles = async () => {
+    if (!user) return;
     setLoading(true);
+
     try {
-      const data = await getVehiclesByUserId(userId);
+      const data = await showToastRequest(
+        getVehiclesByUserId(user.id),
+        {
+          loading: "Cargando vehículos...",
+          success: "Vehículos cargados ✅",
+          error: "Error al cargar vehículos ❌",
+        }
+      );
       setVehicles(data);
-    } catch (error) {
-      console.error("Error cargando vehículos:", error);
-      toast.error("Error al cargar vehículos");
+    } catch (err) {
+      console.error("Error al cargar vehículos:", err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchVehicles();
-  }, []);
+    if (user) fetchVehicles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -40,7 +51,6 @@ const VehicleDashboard = () => {
   };
 
   const handleEdit = (vehicle) => {
-            console.log(vehicle);
     setSelectedVehicle(vehicle);
     setShowModal(true);
   };
@@ -51,37 +61,28 @@ const VehicleDashboard = () => {
   };
 
   const handleDeleteVehicle = async (vehicleId) => {
+    setShowConfirm(false);
+    setVehicleToDelete(null);
+
     try {
-      console.log(vehicleId)
-      await deleteVehicle(vehicleId);
-      toast.success("Vehículo eliminado correctamente 🚗");
+      await showToastRequest(
+        deleteVehicle(vehicleId),
+        {
+          loading: "Eliminando vehículo...",
+          success: "Vehículo eliminado correctamente 🚗",
+          error: "No se pudo eliminar el vehículo ❌",
+        }
+      );
       fetchVehicles();
-    } catch (error) {
-      console.error("Error al eliminar vehículo:", error);
-      toast.error("Error al eliminar el vehículo");
-    } finally {
-      setShowConfirm(false);
-      setVehicleToDelete(null);
+    } catch (err) {
+      console.error("Error al eliminar vehículo:", err);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header 
-      <header className="bg-purple-700 text-white flex justify-between items-center px-6 py-4">
-        <h1 className="text-xl font-bold">CompraCar</h1>
-        <div className="flex items-center gap-4">
-          <span>Bienvenido</span>
-          <img
-            src="https://i.pravatar.cc/40"
-            alt="User Avatar"
-            className="rounded-full w-10 h-10"
-          />
-        </div>
-      </header>
-      */}
       <Header />
-      {/* Content */}
+
       <main className="p-6">
         <div className="flex justify-center mb-6">
           <button
@@ -113,12 +114,10 @@ const VehicleDashboard = () => {
         )}
       </main>
 
-      {/* Modal Agregar/Editar */}
       {showModal && (
         <AddVehicleModal onClose={handleCloseModal} editVehicle={selectedVehicle} />
       )}
 
-      {/* Modal Confirmación de eliminación */}
       {showConfirm && vehicleToDelete && (
         <ConfirmDialog
           title="Confirmar eliminación"
@@ -140,4 +139,4 @@ const VehicleDashboard = () => {
   );
 };
 
-export default VehicleDashboard;
+export default UserDashboard;
