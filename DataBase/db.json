@@ -1,17 +1,26 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Admin Principal",
       "email": "admin@compracar.cr",
       "password": "admin123",
       "role": "admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Cliente de prueba",
       "email": "cliente@compracar.cr",
       "password": "cliente123",
+      "role": "cliente"
+    },
+    {
+      "id": "43cf",
+      "name": "test",
+      "birthdate": "1991-08-01",
+      "direction": "test",
+      "email": "test@gmail.com",
+      "password": "test1",
       "role": "cliente"
     }
   ],
@@ -35,27 +44,27 @@
   ],
   "vehiclesType": [
     {
-      "id": 1,
+      "id": "1",
       "name": "SUV"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Sedán"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Pick-up"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Hatchback"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Coupé"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Convertible"
     }
   ]

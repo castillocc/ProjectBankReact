@@ -29,8 +29,24 @@ export const UserProvider = ({ children }) => {
     setUserState(null);
   };
 
+  const register = async (newUser) => {
+    const res = await fetch("http://localhost:3000/users");
+    const users = await res.json();
+    const exists = users.find(u => u.email === newUser.email);
+    if (exists) {
+      return { success: false, message: "Este correo ya está registrado" };
+    }
+    await fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+    setUserState(newUser);
+    return { success: true };
+  };
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, register }}>
       {children}
     </UserContext.Provider>
   );

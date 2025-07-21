@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "../components/auth/Login";
+import Registro from '../components/auth/Registro.jsx';
 import UserDashboard from "../components/client/UserDashboard";
 import Unauthorized from "../components/admin/Unauthorized";
 import NotFound from "../components/common/NotFound";
@@ -17,6 +18,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Landing />} />
       <Route path="/acerca" element={<About />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/registro" element={<Registro />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
 
       {/* Cliente */}

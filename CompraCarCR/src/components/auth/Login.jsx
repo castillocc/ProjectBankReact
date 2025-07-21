@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useUser } from "../../context/UserContext";
@@ -39,7 +39,8 @@ const Login = () => {
 
   return (
     <motion.div
-      className="max-w-md mx-auto mt-20 p-6 bg-white shadow rounded"
+      className="max-w-md mx-auto p-6 bg-white shadow rounded"
+      style={{marginTop: "200px"}}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
@@ -69,11 +70,17 @@ const Login = () => {
 
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700"
+              className="bg-purple-600 text-white px-4 py-2 rounded w-full hover:bg-purple-700"
             >
               Ingresar
             </button>
           </form>
+          <p className="text-sm mt-4">
+            ¿No tenés cuenta?{" "}
+            <Link to="/registro" className="text-purple-600 hover:underline">
+                Registrarse
+            </Link>
+          </p>
         </>
       )}
     </motion.div>
