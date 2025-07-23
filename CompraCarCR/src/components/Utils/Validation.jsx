@@ -2,13 +2,15 @@
 export const validateStepOne = (formData) => {
   const errors = {};
 
-  if (!formData.title?.trim()) errors.title = "El título es obligatorio";
-  if (!formData.brand?.trim()) errors.brand = "La marca es obligatoria";
-  if (!formData.model?.trim()) errors.model = "El modelo es obligatorio";
-  if (!formData.year || isNaN(formData.year)) errors.year = "Año inválido";
-  if (!formData.price || isNaN(formData.price)) errors.price = "Precio inválido";
-  if (!formData.fuelType) errors.fuelType = "Selecciona el tipo de combustible";
-  if (!formData.vehicleType) errors.vehicleType = "Selecciona el tipo de vehículo";
+if (!formData.title?.trim()) errors.title = "El título es obligatorio";
+if (!formData.brand?.trim()) errors.brand = "La marca es obligatoria";
+if (!formData.model?.trim()) errors.model = "El modelo es obligatorio";
+if (!formData.year || isNaN(formData.year)) errors.year = "Año inválido";
+if (!formData.price || isNaN(formData.price)) errors.price = "Precio inválido";
+if (!formData.fuelType) errors.fuelType = "Selecciona el tipo de combustible";
+if (!formData.vehicleType) errors.vehicleType = "Selecciona el tipo de vehículo";
+if (!formData.transmission) errors.transmission = "Selecciona la transmisión";       
+if (!formData.drivetrain) errors.drivetrain = "Selecciona el tipo de tracción";        
 
   return errors;
 };

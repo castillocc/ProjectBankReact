@@ -72,7 +72,7 @@
       "userId": 2,
       "id": "053c"
     },
-        {
+    {
       "title": "Nuevo JMC GRAN AVENUE",
       "brand": "JMC",
       "model": "GRAN AVENUE",
@@ -87,6 +87,40 @@
       "video": "",
       "userId": 2,
       "id": "053d"
+    },
+    {
+      "id": "9f60",
+      "title": "test",
+      "brand": "ford",
+      "model": "bronco",
+      "year": "2025",
+      "price": "58000",
+      "fuelType": "Diésel",
+      "vehicleType": "SUV",
+      "description": "",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1753107707/id7wu3pqm7hmdlazjwg3.webp"
+      ],
+      "video": "",
+      "userId": "2"
+    },
+    {
+      "id": "7503",
+      "title": "Toyota Hilux 2025",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2025,
+      "price": "50000",
+      "fuelType": "Diésel",
+      "vehicleType": "Pick-up",
+      "transmission": "Manual",
+      "drivetrain": "4x4",
+      "description": "",
+      "images": [
+        "https://res.cloudinary.com/dutabvlxt/image/upload/v1753242787/mc56hkspwsbcxi26y7ry.jpg"
+      ],
+      "video": "",
+      "userId": "2"
     }
   ],
   "vehiclesType": [

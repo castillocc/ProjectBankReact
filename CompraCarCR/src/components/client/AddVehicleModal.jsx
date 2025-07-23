@@ -57,13 +57,11 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
     setSubmitError("");
 
     try {
-      // Procesar imágenes
       const alreadyUploadedImages = (formData.images || []).filter(isCloudinaryUrl);
       const newImages = (formData.images || []).filter((img) => !isCloudinaryUrl(img));
       const uploadedImageUrls = await uploadMultipleImagesToCloudinary(newImages);
       const finalImageUrls = [...alreadyUploadedImages, ...uploadedImageUrls];
 
-      // Procesar video
       let videoUrl = "";
       if (formData.video) {
         videoUrl = isCloudinaryUrl(formData.video)
@@ -71,7 +69,6 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
           : await uploadVideoToCloudinary(formData.video);
       }
 
-      // Payload
       const payload = {
         ...formData,
         images: finalImageUrls,
@@ -79,17 +76,15 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
         userId: user?.id,
       };
 
-      // API call
       const action = editVehicle
         ? () => updateVehicle(editVehicle.id, payload)
         : () => createVehicle(payload);
 
-      // Ejecutar con validación
       await showToastRequest(action, {
         loading: editVehicle ? "Actualizando vehículo..." : "Subiendo vehículo...",
         success: editVehicle ? "Vehículo actualizado ✅" : "Vehículo creado 🚗",
         error: "Error al guardar vehículo ❌",
-        invalid: "Debe iniciar sesión para subir vehículos 🚫", // se mostrará si falla validate()
+        invalid: "Debe iniciar sesión para subir vehículos 🚫",
       }, {
         validate: () => !!user,
         iconos: {
@@ -98,8 +93,7 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
           error: "❌",
         },
         onSuccess: onClose,
-        onError: (err) =>
-          setSubmitError(err?.message || "Hubo un problema al guardar el vehículo."),
+        onError: (err) => setSubmitError(err?.message || "Hubo un problema al guardar el vehículo."),
       });
 
     } catch (err) {
@@ -127,7 +121,7 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
       <AnimatePresence>
         <motion.div
           key="modal"
@@ -135,9 +129,8 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="bg-white rounded-2xl shadow-xl w-full max-w-3xl p-6 relative"
+          className="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden"
         >
-          {/* Botón cerrar con z-index alto */}
           <button
             onClick={onClose}
             className="absolute top-4 right-6 text-2xl text-gray-500 hover:text-red-500 z-50"
@@ -145,12 +138,11 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
             &times;
           </button>
 
-          {/* Paso actual con z-index controlado */}
-          <div className="relative z-10">
+          <div className="p-6 border-b">
             <Stepper currentStep={step} steps={["Datos", "Multimedia", "Confirmar"]} />
           </div>
 
-          <div className="mt-8">
+          <div className="flex-1 overflow-y-auto px-6 py-4">
             {step === 1 && (
               <VehicleStepOne data={formData} onChange={handleChange} errors={errors} />
             )}
@@ -158,7 +150,7 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
             {step === 3 && <VehicleStepThree />}
           </div>
 
-          <div className="mt-10 flex justify-between">
+          <div className="border-t px-6 py-4 bg-white sticky bottom-0 flex justify-between z-10">
             <button
               onClick={handleBack}
               disabled={step === 1 || loading}

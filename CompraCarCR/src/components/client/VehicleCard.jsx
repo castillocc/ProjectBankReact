@@ -4,6 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import StatsCard from "../common/StatsCard";
 
 const VehicleCard = ({ vehicle, onEdit, onDelete }) => {
   const images = vehicle.images || [];
@@ -52,10 +53,11 @@ const VehicleCard = ({ vehicle, onEdit, onDelete }) => {
         <div className="text-indigo-600 font-bold mb-3">${vehicle.price}</div>
 
         {/* Métricas: vistas y favoritos */}
-        <div className="flex justify-between text-sm text-gray-500 mb-2">
-          <span>👁 {vehicle.views || 0} vistas</span>
-          <span>⭐ {vehicle.favorites || 0} favoritos</span>
-        </div>
+        <StatsCard
+          views={vehicle.views}
+          favorites={vehicle.favorites}
+          date={vehicle.createdAt}
+        />
 
         {/* Botones de acción */}
         <div className="flex justify-between mt-4">
