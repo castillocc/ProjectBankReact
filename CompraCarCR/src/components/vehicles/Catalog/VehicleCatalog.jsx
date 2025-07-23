@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars, selectCars } from "../../../context/slice/CarSlice";
-import VehicleCard from "./VehicleCard";
+import VehicleCard from "../../common/VehicleCard";
 import { Link } from "react-router-dom";
 
 const VehicleCatalog = () => {
@@ -21,7 +21,7 @@ const VehicleCatalog = () => {
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {cars.map((car) => (
             <Link key={car.id} to={`/vehiculo/${car.id}`}>
-              <VehicleCard car={car} />
+              <VehicleCard vehicle={car} enableFavorites={true} />
             </Link>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import VehicleCard from "./VehicleCard";
+import VehicleCard from "../common/VehicleCard";
 import AddVehicleModal from "./AddVehicleModal";
 import { getVehiclesByUserId, deleteVehicle } from "../../services/VehicleService";
 import CarLoader from "../common/CarLoader";
@@ -104,10 +104,10 @@ const UserDashboard = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {vehicles.map((vehicle) => (
               <VehicleCard
-                key={vehicle.id}
                 vehicle={vehicle}
                 onEdit={handleEdit}
                 onDelete={handleDeleteRequest}
+                showActions={true}
               />
             ))}
           </div>

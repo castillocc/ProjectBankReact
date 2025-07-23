@@ -129,13 +129,14 @@ export default function AddVehicleModal({ onClose, editVehicle = null }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden"
+          className="relative bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-6 text-2xl text-gray-500 hover:text-red-500 z-50"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white text-gray-700 hover:bg-red-100 hover:text-red-600 shadow transition duration-200 z-50 flex items-center justify-center"
+            aria-label="Cerrar modal"
           >
-            &times;
+            <span className="text-2xl">&times;</span>
           </button>
 
           <div className="p-6 border-b">
